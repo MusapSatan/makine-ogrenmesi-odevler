@@ -1,0 +1,72 @@
+1. Bölüm – Poisson Dağılımı için MLE Türetilmesi
+Bu bölümde amaç, verilen trafik verisi için Poisson dağılımının parametresi olan λ (lambda) değerini Maximum Likelihood Estimation (MLE) yöntemiyle teorik olarak elde etmektir.
+
+1. Problem Tanımı
+Bir dakikalık zaman aralıklarında gözlemlenen araç sayıları aşağıdaki gibidir:
+
+Copy
+12, 15, 10, 8, 14, 11, 13, 16, 9, 12, 11, 14, 10, 15
+Bu gözlemler:
+
+Copy
+k1, k2, ..., kn
+şeklinde gösterilir ve her birinin Poisson(λ) dağılımından geldiği varsayılır.
+
+Amaç: veri için en uygun λ parametresini tahmin etmektir.
+
+2. Poisson Olasılık Fonksiyonu
+Poisson dağılımının olasılık kütle fonksiyonu:
+
+Copy
+P(K = k) = (e^-λ * λ^k) / k!
+Burada:
+
+λ → beklenen olay sayısı
+k → gözlemlenen değer
+3. Likelihood Fonksiyonu
+MLE yönteminde tüm gözlemlerin ortak olasılığı yazılır.
+
+Bağımsız gözlemler için likelihood:
+
+Copy
+L(λ) = Π [ e^-λ * λ^ki / ki! ]
+Bu ifade düzenlenirse:
+
+Copy
+L(λ) = e^(-nλ) * λ^(Σki) / Π(ki!)
+4. Log‑Likelihood
+Hesaplamayı kolaylaştırmak için likelihood’un logaritması alınır.
+
+Copy
+l(λ) = log L(λ)
+Sonuç:
+
+Copy
+l(λ) = -nλ + (Σki) log(λ) - Σ log(ki!)
+5. Türev Alma
+MLE için log‑likelihood fonksiyonunun türevi alınır.
+
+Copy
+dl/dλ = -n + (Σki / λ)
+6. Maksimum Noktanın Bulunması
+Türev sıfıra eşitlenir:
+
+Copy
+-n + (Σki / λ) = 0
+Buradan λ için çözüm:
+
+Copy
+λ = (Σki) / n
+7. Sonuç
+Poisson dağılımı için MLE tahmini veri ortalamasına eşittir.
+
+Copy
+λ̂ = (1/n) Σki
+Verilen veri için:
+
+Copy
+Toplam = 170
+Gözlem sayısı = 14
+Copy
+λ̂ = 170 / 14 ≈ 12.14
+Bu değer, bir dakikada beklenen ortalama araç sayısını temsil eder
