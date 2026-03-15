@@ -1,125 +1,72 @@
-Poisson dağılımı için **Maximum Likelihood Estimation (MLE)** parametresini bulma süreci aslında birkaç net matematik adımından oluşur. Birinci bölümde yapılan şey, verilen veri için **λ parametresinin teorik olarak nasıl elde edildiğini göstermek**. Aşağıda bunu adım adım ve rapora yazılabilecek şekilde anlatıyorum.
+1. Bölüm – Poisson Dağılımı için MLE Türetilmesi
+Bu bölümde amaç, verilen trafik verisi için Poisson dağılımının parametresi olan λ (lambda) değerini Maximum Likelihood Estimation (MLE) yöntemiyle teorik olarak elde etmektir.
 
----
+1. Problem Tanımı
+Bir dakikalık zaman aralıklarında gözlemlenen araç sayıları aşağıdaki gibidir:
 
-## 1. Problem Tanımı
-
-Elimizde bir dakikalık zaman aralıklarında gözlemlenen araç sayıları bulunmaktadır:
-
+Copy
 12, 15, 10, 8, 14, 11, 13, 16, 9, 12, 11, 14, 10, 15
-
 Bu gözlemler:
 
-$$k_1, k_2, ..., k_n$$
+Copy
+k1, k2, ..., kn
+şeklinde gösterilir ve her birinin Poisson(λ) dağılımından geldiği varsayılır.
 
-şeklinde gösterilir ve her birinin **Poisson(λ)** dağılımından geldiği varsayılır.
+Amaç: veri için en uygun λ parametresini tahmin etmektir.
 
-Amaç:  
-Bu veri için **λ parametresinin MLE tahminini bulmak.**
+2. Poisson Olasılık Fonksiyonu
+Poisson dağılımının olasılık kütle fonksiyonu:
 
----
+Copy
+P(K = k) = (e^-λ * λ^k) / k!
+Burada:
 
-## 2. Poisson Olasılık Kütle Fonksiyonu
-
-Poisson dağılımının olasılık fonksiyonu:
-
-$$
-P(K = k) = \frac{e^{-\lambda} \lambda^k}{k!}
-$$
-
-Burada
-
-- $$\lambda$$ : beklenen olay sayısı  
-- $$k$$ : gözlemlenen değer
-
----
-
-## 3. Likelihood Fonksiyonunun Kurulması
-
+λ → beklenen olay sayısı
+k → gözlemlenen değer
+3. Likelihood Fonksiyonu
 MLE yönteminde tüm gözlemlerin ortak olasılığı yazılır.
 
 Bağımsız gözlemler için likelihood:
 
-$$
-L(\lambda) = \prod_{i=1}^{n} \frac{e^{-\lambda}\lambda^{k_i}}{k_i!}
-$$
+Copy
+L(λ) = Π [ e^-λ * λ^ki / ki! ]
+Bu ifade düzenlenirse:
 
-Bu ifade açılırsa:
+Copy
+L(λ) = e^(-nλ) * λ^(Σki) / Π(ki!)
+4. Log‑Likelihood
+Hesaplamayı kolaylaştırmak için likelihood’un logaritması alınır.
 
-$$
-L(\lambda) =
-\frac{e^{-n\lambda}\lambda^{\sum k_i}}{\prod k_i!}
-$$
+Copy
+l(λ) = log L(λ)
+Sonuç:
 
----
-
-## 4. Log‑Likelihood Alınması
-
-Çarpımlar ile çalışmak zor olduğu için log alınır.
-
-$$
-\ell(\lambda) = \log L(\lambda)
-$$
-
-$$
-\ell(\lambda) =
-- n\lambda + (\sum k_i)\log(\lambda) - \sum \log(k_i!)
-$$
-
----
-
-## 5. Türev Alınması
-
+Copy
+l(λ) = -nλ + (Σki) log(λ) - Σ log(ki!)
+5. Türev Alma
 MLE için log‑likelihood fonksiyonunun türevi alınır.
 
-$$
-\frac{d\ell}{d\lambda} =
-- n + \frac{\sum k_i}{\lambda}
-$$
+Copy
+dl/dλ = -n + (Σki / λ)
+6. Maksimum Noktanın Bulunması
+Türev sıfıra eşitlenir:
 
----
+Copy
+-n + (Σki / λ) = 0
+Buradan λ için çözüm:
 
-## 6. Maksimum Noktanın Bulunması
+Copy
+λ = (Σki) / n
+7. Sonuç
+Poisson dağılımı için MLE tahmini veri ortalamasına eşittir.
 
-Türevi sıfıra eşitleriz:
-
-$$
-- n + \frac{\sum k_i}{\lambda} = 0
-$$
-
-Buradan:
-
-$$
-\lambda = \frac{\sum k_i}{n}
-$$
-
----
-
-## 7. Sonuç
-
-Poisson dağılımı için **MLE tahmini veri ortalamasına eşittir**:
-
-$$
-\hat{\lambda} = \frac{1}{n}\sum k_i
-$$
-
+Copy
+λ̂ = (1/n) Σki
 Verilen veri için:
 
-Toplam = 170  
+Copy
+Toplam = 170
 Gözlem sayısı = 14
-
-$$
-\hat{\lambda} = \frac{170}{14} = 12.14
-$$
-
----
-
-## Nihai Sonuç
-
-MLE yöntemi ile trafik verisi için tahmin edilen Poisson parametresi:
-
-$$
-\lambda \approx 12.14
-$$
-
-Bu değer, **bir dakikada beklenen ortalama araç sayısını** temsil eder.
+Copy
+λ̂ = 170 / 14 ≈ 12.14
+Bu değer, bir dakikada beklenen ortalama araç sayısını temsil eder
