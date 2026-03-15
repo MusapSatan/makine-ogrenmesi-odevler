@@ -1,0 +1,37 @@
+Gerçek veri setlerinde bazen normalden çok farklı gözlemler bulunabilir. Bu tür değerlere aykırı değer (outlier) denir. Bu bölümde, Poisson modeli için MLE tahmininin aykırı bir değerden nasıl etkilendiği incelenmiştir.
+
+Yaklaşım
+Öncelikle orijinal trafik verisi kullanılarak λ değeri hesaplanır.
+
+Daha sonra veri setine çok büyük bir gözlem (200 araç) eklenir ve λ değeri yeniden hesaplanır.
+
+Amaç, ortalamaya dayalı olan MLE tahmininin aykırı değerlere ne kadar hassas olduğunu göstermektir.
+
+Python Kodu
+Copy
+import numpy as np
+
+# Orijinal veri
+traffic_data = np.array([12, 15, 10, 8, 14, 11, 13, 16, 9,
+                         12, 11, 14, 10, 15])
+
+# Orijinal lambda
+lambda_original = np.mean(traffic_data)
+
+# Outlier eklenmiş veri
+traffic_with_outlier = np.append(traffic_data, 200)
+
+# Yeni lambda
+lambda_outlier = np.mean(traffic_with_outlier)
+
+print("Orijinal veri için lambda:", lambda_original)
+print("Outlier eklenmiş veri için lambda:", lambda_outlier)
+Sonuç
+Hesaplanan değerler yaklaşık olarak:
+
+Orijinal veri: λ ≈ 12.14
+Outlier eklenmiş veri: λ ≈ 24.67
+Yorum
+Sonuçlar, Poisson dağılımında MLE ile elde edilen λ tahmininin veri ortalamasına dayandığı için aykırı değerlere oldukça duyarlı olduğunu göstermektedir. Tek bir çok büyük gözlem bile parametre tahminini önemli ölçüde değiştirebilir.
+
+Bu nedenle gerçek veri analizlerinde aykırı değerlerin kontrol edilmesi ve veri temizliği yapılması önemli bir adımdır.
