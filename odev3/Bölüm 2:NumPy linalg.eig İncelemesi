@@ -1,1 +1,39 @@
+Giriş:
+Bu çalışmada, karesel bir matrisin özdeğer ve özvektörlerini hesaplama problemi ele alınmıştır. Öncelikle manuel olarak determinant ve karakteristik polinom üzerinden çözüm üreten bir yaklaşım incelenmiştir. Ancak bu yaklaşım, özellikle 5x5 gibi görece küçük matrislerde bile hesaplama maliyeti ve sayısal kararsızlık (numerical instability) nedeniyle pratik değildir.
+Yazılan kod, matematiksel olarak doğru bir mantık üzerine kurulmuş olsa da, determinantın rekürsif (recursive) şekilde hesaplanması O(n!) karmaşıklığa sahiptir. Bu da boyut büyüdükçe işlemi aşırı yavaş ve hataya açık hale getirir. Ayrıca büyük sayılarla çalışıldığı için floating-point hataları büyür ve sonuçlar anlamsız (çok büyük veya kompleks) değerlere
+dönüşebilir.Bu nedenle gerçek uygulamalarda bu tür manuel yöntemler yerine, optimize edilmiş ve sayısal olarak stabil algoritmalar kullanan kütüphaneler tercih edilmelidir.
+
+Kodun Genel Yapısı:
+
+Kodun amacı, bir matrisin özdeğerlerini ve özvektörlerini NumPy kullanmadan hesaplamaktır. Bu işlem,
+aşağıdaki adımları içerir:
+
+1.Matrisin boyutlarının belirlenmesi.
+2.Matrisin determinantının hesaplanması.
+3.Karakteristik denklemin oluşturulması.
+4.Karakteristik denklemin köklerinin bulunması (özdeğerlerin hesaplanması).
+
+1. Matrisin Boyutlarını Belirleme
+Fonksiyon: get_dimensions:amaç verilen matrisin boyutunu döndürmektir.
+Parametre olarak matrisin kendisini alır.
+dödürdüğü değer ise matrisin satır ve sütun sayısıdır.
+
+2. Determinant Hesaplama
+Fonksiyon: find_determinant:amaç verilen matrisin determinantını hesaplar.2x2 matrisler için doğrudan formül kullanılırken
+daha büyük matrisler için recursive olarak hesaplama yapar bu da büyük maliyet anlamına gelmektedir.
+parametre olarak matris ve exculuded(çapras çarpımlar sırasında kullanılıcak sayı) alır
+dödürüğü değer ise matrisin determinantıdır.
+
+3. Liste İşlemleri
+Fonksiyon: list_multiply:iki listeyi çarpar bu işlem özdeğer denklemlerinde katsayıların çarpımı için kullanılır.
+Fonksiyon: list_add:bu fonksiyonda ili listeyi eleman bazında toplar fonksiyonda kullanılan sub değeri -1 yapılırsa 
+toplama işlemi yerine çıkarma işlemi yapılmış olunur.
+
+4. Karakteristik Denklem ve Özdeğer Hesaplama:
+Fonksiyon: determinant_equation:Matrisin determinantını bir denklem olarak ifade eder. Bu denklem, özdeğerleri bulmak için kullanılır.
+Fonksiyon: find_eigenvalues:Özdeğerleri bulur. Bunun için önce karakteristik denklemi oluşturur ve bu denklemin köklerini bulur
+
+Sonuç
+Bu kod, özdeğerlerin ve özvektörlerin nasıl hesaplandığını anlamak için bir öğrenme aracıdır. Ancak, gerçek
+projelerde kullanılmamalıdır. Bunun yerine, NumPy gibi optimize edilmiş kütüphaneler tercih edilmelidir.
 
