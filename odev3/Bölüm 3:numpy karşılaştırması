@@ -1,0 +1,28 @@
+verilen kod özdeğerlerin ve özvektörlerin teorik olarak nasıl hesaplandığını anlamak için oldukça faydalı bir
+öğrenme aracıdır. Kodda kullanılan yöntemler, determinantın hesaplanması, karakteristik denklemin oluşturulması
+ve özdeğerlerin bulunması gibi temel matematiksel kavramların anlaşılmasına yardımcı olmaktadır. Ancak, 
+aşağıdaki nedenlerden dolayı bu kod gerçek projelerde kullanılmamalıdır:
+
+1.Gereksiz Karmaşıklık: Kod, özdeğer ve özvektör hesaplamalarında birçok manuel işlem içerir. Bu işlemler,
+modern kütüphanelerin sunduğu optimize edilmiş yöntemlerle karşılaştırıldığında gereksiz yere karmaşıktır.
+
+2.Verimsizlik: Kod, özellikle büyük boyutlu matrislerde verimsiz çalışır. Özyinelemeli (recursive) determinant
+hesaplama yöntemi, büyük boyutlu matrislerde performans sorunlarına yol açabilir.
+
+3.Hata Yapma Riski: Kodda birçok manuel işlem bulunduğu için hata yapma ihtimali yüksektir. NumPy gibi 
+kütüphaneler ise bu işlemleri daha güvenilir bir şekilde gerçekleştirebilir.
+
+4.Kapsamlı Test Eksikliği: NumPy gibi kütüphaneler, dünya çapında test edilmiş ve birçok farklı senaryoda 
+doğrulanmıştır. Verilen bu kod ise bu tür testlerden geçmemiştir ve beklenmeyen durumlarda hatalara yol 
+açabilir.
+
+NumPy’nin Avantajları:
+Hızlı ve Verimli: NumPy, C ve Fortran gibi düşük seviyeli dillerde yazıldığından çok daha hızlıdır.
+Kolay Kullanım: NumPy’nin linalg.eig fonksiyonu, özdeğer ve özvektör hesaplamalarını birkaç satırda gerçekleştirebilir
+Güvenirlik: NumPy, geniş bir kullanıcı topluluğu tarafından test edilmiş ve geliştirilmiştir.
+
+Öneriler
+
+Özdeğer ve özvektör hesaplama gibi işlemler için her zaman NumPy veya benzeri optimize edilmiş kütüphaneleri
+kullanın. Bu, hem daha hızlı sonuç almanızı sağlar hem de doğruluk ve güvenilirlik açısından daha iyidir
+Bu kodu, yalnızca özdeğer ve özvektörlerin nasıl hesaplandığını öğrenmek için bir eğitim aracı olarak kullanabilirsiniz.
