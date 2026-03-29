@@ -1,1 +1,46 @@
+Matris Nedir?
+matris sayıların düzenli bir şekilde satur ve sütunlardan oluşan yapıya denir.Matematikte ve bilgisayar
+bilimlerinde matrisler, özellikle lineer denklem sistemlerini çözmek, veri dönüşümü yapmak ve veri 
+temsilinde yaygın olarak kullanılır. Makine öğrenmesinde matrisler, veri kümelerini ve ağırlıkları 
+temsil etmek için kullanılır.
+
+Özdeğer ve Özvektör Nedir?
+Özdeğer (Eigenvalue):bir matrisin bir özvektöründe yaptığı dönüşüm sonucunda sadece vektörün büüyklüğünde değişitiren 
+skaler bir değerdir.
+Özvektör (Eigenvector): Bir matrisin dönüşümüne uğradığında doğrultusu değişmeyen ancak büyüklüğü değişebilen bir vektördür.
+
+Matematiksel olarak bu ikisi arasındaki ilişki:
+A⋅v=λ⋅v şeklinde ifade edilir.
+Burada:
+A: Kare matris
+v: Özvektör
+λ: Özdeğer 
+
+Makine Öğrenmesinde Kullanımı
+Makine öğrenmesinde özdeğerler ve özvektörler birçok önemli algoritmada kullanılır. Özellikle şu alanlarda 
+karşımıza çıkar:
+
+1.Boyut İndirgeme (Dimensionality Reduction):
+Özellikle Principal Component Analysis (PCA) gibi yöntemlerde, veri kümesindeki en önemli özellikleri seçmek için
+özdeğer ve özvektörler kullanılır. PCA, büyük boyutlu veri kümelerindeki varyansı en iyi açıklayan yönleri (özvektörler) 
+ve bu yönlerdeki büyüklükleri (özdeğerler) bulur.
+
+2.Veri Dönüşümü:
+Özvektörler, veriyi yeni bir koordinat sistemine dönüştürmek için kullanılır. Bu, özellikle sınıflandırma ve kümeleme gibi makine
+öğrenmesi problemlerinde, veriyi daha anlamlı bir şekilde temsil etmek için önemlidir.
+
+3.Doğrusal Bağımlılık:
+Özdeğerler ve özvektörler, bir matrisin doğrusal bağımlılığını analiz etmek için kullanılır. Bu, özellikle veri setindeki 
+özelliklerin birbirine bağımlı olup olmadığını anlamak için önemlidir.
+
+4.Makine Öğrenimi Modellerinin Analizi:
+Özdeğerler, bir modelin kararlılığını ve doğruluğunu değerlendirmek için kullanılabilir. Örneğin, bir modelin Hessian matrisinin
+özdeğerleri, modelin optimizasyonundaki kararlılığı gösterir.
+
+Kaynakça:
+Machine Learning & Linear Algebra — Eigenvalue and Eigenvector
+
+
+
+
 
